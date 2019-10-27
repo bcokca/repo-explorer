@@ -1,7 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-import Search from './Search';
+import Search from '../../components/Search';
 const Main = function() {
   const history = useHistory();
 
@@ -18,7 +18,7 @@ const Main = function() {
         Welcome to Repo Explorer. Type in your organizations name in order to
         find the related repos
       </p>
-      <Search onClickHandler={handleClick} />
+      <Search onClickHandler={handleClick} labelTitle={"Organization Name"} />
     </main>
   );
 };

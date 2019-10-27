@@ -1,5 +1,4 @@
 import React from "react";
-import debounce from "../../utility/debounce";
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +7,6 @@ class Search extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //TODO: debounce this
   //TODO: we also need validators such as space and stuff
   updateInputValue(event) {
     this.setState({
@@ -25,11 +23,12 @@ class Search extends React.Component {
 
   render() {
     const { searchKeyword } = this.state;
+    const { labelTitle, hideBtn } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
         <div className="form-group">
-          <label>Organization Name</label>
+          <label>{labelTitle}</label>
 
           <input
             type="text"
@@ -38,17 +37,19 @@ class Search extends React.Component {
             value={this.state.inputValue}
             aria-label="Large"
             aria-describedby="inputGroup-sizing-sm"
-            placeholder="Org Name"
+            placeholder="Search"
           />
         </div>
 
-        <button
-          disabled={searchKeyword === ""}
-          type="submit"
-          className="btn btn-primary"
-        >
-          Search
-        </button>
+        {hideBtn ? null : (
+          <button
+            disabled={searchKeyword === ""}
+            type="submit"
+            className="btn btn-primary"
+          >
+            Search
+          </button>
+        )}
       </form>
     );
   }
