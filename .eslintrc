@@ -1,0 +1,21 @@
+{
+  "extends": "react-app",
+  "globals": {
+    "windows": true
+  },
+  "env": {
+    "browser": true,
+  },
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "bracketSpacing": true,
+        "trailingComma": "es5",
+        "singleQuote": true,
+        "printWidth": 100
+      }
+    ]
+  }
+}
