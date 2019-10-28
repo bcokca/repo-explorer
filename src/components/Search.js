@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -6,6 +7,11 @@ class Search extends React.Component {
     this.updateInputValue = this.updateInputValue.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  static defaultProps = {
+    hideBtn: false,
+    labelTitle: "Search"
+  };
 
   //TODO: we also need validators such as space and stuff
   updateInputValue(event) {
@@ -54,5 +60,11 @@ class Search extends React.Component {
     );
   }
 }
+
+Search.propTypes = {
+  labelTitle: PropTypes.string,
+  hideBtn: PropTypes.bool,
+  onClickHandler: PropTypes.func.isRequired
+};
 
 export default Search;
