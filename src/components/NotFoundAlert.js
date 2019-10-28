@@ -1,9 +1,9 @@
 import React from "react";
 
-function NotFoundAlert({orgName}) {
+function NotFoundAlert({ message }) {
   return (
     <div className="alert alert-dark" role="alert">
-      No repositories found for {orgName} organization
+      {message}
     </div>
   );
 }

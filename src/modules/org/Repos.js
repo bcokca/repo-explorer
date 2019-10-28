@@ -1,9 +1,9 @@
 import React from "react";
-import Card from "./Card";
-
 import { useHistory, useParams } from "react-router-dom";
+
 import Pagination from "../../components/Pagination";
 import NotFoundAlert from "../../components/NotFoundAlert";
+import Card from "./Card";
 
 function Repositories({ repos, pagination }) {
   const history = useHistory();
@@ -24,7 +24,7 @@ function Repositories({ repos, pagination }) {
           );
         })
       ) : (
-        <NotFoundAlert orgName={orgName} />
+        <NotFoundAlert message={`No repositories found for {orgName} organization`} />
       )}
       {repos && repos.length ? <Pagination {...pagination} /> : null}
     </div>

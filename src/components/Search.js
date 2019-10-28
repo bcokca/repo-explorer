@@ -9,7 +9,7 @@ class Search extends React.Component {
   }
 
   static defaultProps = {
-    hideBtn: false,
+    hideSearchBtn: false,
     labelTitle: "Search"
   };
 
@@ -29,7 +29,7 @@ class Search extends React.Component {
 
   render() {
     const { searchKeyword } = this.state;
-    const { labelTitle, hideBtn } = this.props;
+    const { labelTitle, hideSearchBtn } = this.props;
 
     return (
       <form onSubmit={this.handleSubmit}>
@@ -47,7 +47,7 @@ class Search extends React.Component {
           />
         </div>
 
-        {hideBtn ? null : (
+        {hideSearchBtn ? null : (
           <button
             disabled={searchKeyword === ""}
             type="submit"
@@ -63,7 +63,7 @@ class Search extends React.Component {
 
 Search.propTypes = {
   labelTitle: PropTypes.string,
-  hideBtn: PropTypes.bool,
+  hideSearchBtn: PropTypes.bool,
   onClickHandler: PropTypes.func.isRequired
 };
 

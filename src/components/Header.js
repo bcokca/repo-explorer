@@ -1,9 +1,16 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 function Header() {
+  const history = useHistory();
+
+  function clickHandler() {
+    history.push("/");
+  }
+
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
+      <a className="navbar-brand" href="#" onClick={clickHandler}>
         Repo Explorer
       </a>
       <button
@@ -20,7 +27,7 @@ function Header() {
       <div className="collapse navbar-collapse" id="navbarCollapse">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <a className="nav-link" href="#">
+            <a className="nav-link" href="#" onClick={clickHandler}>
               Home <span className="sr-only">(current)</span>
             </a>
           </li>

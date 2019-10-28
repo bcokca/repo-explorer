@@ -1,3 +1,11 @@
+.card {
+  border-top: none !important; /** TODO: shouldnt use !important **/
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0;
+}
+
 .card .card-body .card-title {
   color: #007bff;
   font-size: 1rem;
@@ -9,4 +17,3 @@
   text-decoration: underline;
   color: #007bff;
 }
-

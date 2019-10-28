@@ -9,6 +9,11 @@ class SortFilter extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  static defaultProps = {
+    filterValue: "",
+    filterOptions: []
+  };
+
   handleSubmit(event) {
     event.preventDefault();
     const { sort } = this.state;
@@ -21,7 +26,7 @@ class SortFilter extends React.Component {
   }
 
   render() {
-    const {filterOptions} = this.props;
+    const { filterOptions } = this.props;
     return (
       <div className="form-group">
         <label htmlFor="filter-select">Sort by</label>
@@ -31,7 +36,11 @@ class SortFilter extends React.Component {
           onChange={this.handleSubmit}
         >
           {filterOptions.map(option => {
-            return <option value={option.value} key={option.value}>{option.text}</option>;
+            return (
+              <option value={option.value} key={option.value}>
+                {option.text}
+              </option>
+            );
           })}
         </select>
       </div>

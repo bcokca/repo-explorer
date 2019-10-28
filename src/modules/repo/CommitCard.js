@@ -8,7 +8,7 @@ function Card({ commitObj }) {
   return (
     <div className="list-group-item list-group-item-action">
       <div className="d-flex w-100 justify-content-between">
-        <p className="mb-1 font-weight-600">
+        <p className="mb-1 fw-600">
           {message && message.length > 60
             ? `${message.substring(0, 75)}...`
             : message}
@@ -20,7 +20,8 @@ function Card({ commitObj }) {
       <p className="mb-1"></p>
       <small>
         {/* TODO: relative date filter */}
-        <strong>{author.name}</strong> committed on {date.toLocaleDateString()} at {date.toLocaleTimeString()}
+        <strong>{author.name}</strong> committed on {date.toLocaleDateString()}{" "}
+        at {date.toLocaleTimeString()}
       </small>
     </div>
   );

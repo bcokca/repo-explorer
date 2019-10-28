@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 
 import Search from '../../components/Search';
+
 const Main = function() {
   const history = useHistory();
 

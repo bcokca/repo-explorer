@@ -1,6 +1,8 @@
 import React from "react";
-import Commits from "./Commits";
 import { useParams } from "react-router-dom";
+
+import Commits from "./Commits";
+
 function RepoPage() {
   const { orgName, repoName } = useParams();
 

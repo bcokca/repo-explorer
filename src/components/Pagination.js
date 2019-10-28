@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ITEM_PER_PAGE = 30;
 function Pagination({ paginationClickHandler, page, total_count }) {
@@ -55,5 +56,15 @@ function Pagination({ paginationClickHandler, page, total_count }) {
     </nav>
   );
 }
+
+Pagination.propTypes = {
+  page: PropTypes.number.isRequired,
+  total_count: PropTypes.number,
+  paginationClickHandler: PropTypes.func.isRequired
+};
+
+Pagination.defaultProps = {
+  total_count: 0
+};
 
 export default Pagination;

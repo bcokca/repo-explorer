@@ -1,5 +1,5 @@
-//TODO: the url should come from a environment configuration file
-const BASE_URL = "https://api.github.com"; //TODO: move this to react context
+//TODO: the base url should come from an environment configuration file
+const BASE_URL = "https://api.github.com";
 const PARAMS = {
   method: "GET",
   headers: {

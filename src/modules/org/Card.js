@@ -11,8 +11,8 @@ function Card({
   stargazers_count
 }) {
   return (
-    <div className="card">
-      <div className="card-body">
+    <div className="card bt-0">
+      <div className="card-body pl-0">
         <a className="card-title" onClick={() => commitsClickHandler(name)}>
           {name}
         </a>
