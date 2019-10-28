@@ -7,7 +7,7 @@ import {
 
 import './App.css';
 import Header from './components/Header';
-import MainPage from './modules/main/Main';
+import MainPage from './modules/main/MainPage';
 import AboutPage from './About';
 import OrgPage from './modules/org/OrgPage';
 import RepoPage from './modules/repo/RepoPage';

@@ -6,19 +6,19 @@ function RepoPage() {
 
   return (
     <div>
-      <ul class="nav nav-tabs mb-3">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
+      <ul className="nav nav-tabs mb-3">
+        <li className="nav-item">
+          <a className="nav-link active" href="#">
             Commits
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <a className="nav-link" href="#">
             Issues
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">
+        <li className="nav-item">
+          <a className="nav-link" href="#">
             PRs
           </a>
         </li>

@@ -13,7 +13,7 @@ class SortFilter extends React.Component {
     event.preventDefault();
     const { sort } = this.state;
     const selectedItem = event.target.value;
-    if (sort != selectedItem) {
+    if (sort !== selectedItem) {
       const { selectChangeHandler } = this.props;
       this.setState({ sort: selectedItem });
       selectChangeHandler(selectedItem);
@@ -24,14 +24,14 @@ class SortFilter extends React.Component {
     const {filterOptions} = this.props;
     return (
       <div className="form-group">
-        <label for="exampleFormControlSelect1">Select Filter</label>
+        <label htmlFor="filter-select">Select Filter</label>
         <select
           className="form-control"
-          id="exampleFormControlSelect1"
+          id="filter-select"
           onChange={this.handleSubmit}
         >
           {filterOptions.map(option => {
-            return <option value={option.value}>{option.text}</option>;
+            return <option value={option.value} key={option.value}>{option.text}</option>;
           })}
         </select>
       </div>

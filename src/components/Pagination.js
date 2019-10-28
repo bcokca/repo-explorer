@@ -28,12 +28,13 @@ function Pagination({ paginationClickHandler, page, total_count }) {
           ? pages.map(pageNumber => {
               return (
                 <li
+                  key={pageNumber}
                   className={`page-item ${
                     page === pageNumber + 1 ? "active" : ""
                   }`}
                 >
                   <button
-                    class="page-link"
+                    className="page-link"
                     onClick={() => onPageLinkClick(pageNumber + 1)}
                   >
                     {pageNumber + 1}

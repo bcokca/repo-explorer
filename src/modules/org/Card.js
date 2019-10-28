@@ -1,7 +1,15 @@
 import React from "react";
 import "./Cards.css";
 
-function Card({ name, description, commitsClickHandler, language, license, forks_count, stargazers_count }) {
+function Card({
+  name,
+  description,
+  commitsClickHandler,
+  language,
+  license,
+  forks_count,
+  stargazers_count
+}) {
   return (
     <div className="card">
       <div className="card-body">
@@ -13,8 +21,10 @@ function Card({ name, description, commitsClickHandler, language, license, forks
         {license ? (
           <span className="badge badge-pill badge-light">{license.name}</span>
         ) : null}
-        <span className="badge">Forks: </span><span className="badge badge-secondary">{forks_count}</span>
-        <span className="badge">Stars: </span><span className="badge badge-warning">{stargazers_count}</span>
+        <span className="badge">Forks: </span>
+        <span className="badge badge-secondary">{forks_count}</span>
+        <span className="badge">Stars: </span>
+        <span className="badge badge-warning">{stargazers_count}</span>
       </div>
     </div>
   );
