@@ -4,9 +4,9 @@ const ITEM_PER_PAGE = 30;
 function Pagination({ paginationClickHandler, page, total_count }) {
   //create an array of page numbers
   //array length is equal to total number of items divided by item shown per page
-  const pages = Array.from(
-    Array(Math.floor(total_count / ITEM_PER_PAGE)).keys()
-  );
+  const pages = total_count
+    ? Array.from(Array(Math.floor(total_count / ITEM_PER_PAGE)).keys())
+    : 0;
 
   function onPageLinkClick(pageNumber) {
     page = pageNumber;
@@ -24,20 +24,24 @@ function Pagination({ paginationClickHandler, page, total_count }) {
             Previous
           </button>
         </li>
-        {pages.map(pageNumber => {
-          return (
-            <li
-              className={`page-item ${page === pageNumber + 1 ? "active" : ""}`}
-            >
-              <button
-                class="page-link"
-                onClick={() => onPageLinkClick(pageNumber + 1)}
-              >
-                {pageNumber + 1}
-              </button>
-            </li>
-          );
-        })}
+        {pages && pages.length
+          ? pages.map(pageNumber => {
+              return (
+                <li
+                  className={`page-item ${
+                    page === pageNumber + 1 ? "active" : ""
+                  }`}
+                >
+                  <button
+                    class="page-link"
+                    onClick={() => onPageLinkClick(pageNumber + 1)}
+                  >
+                    {pageNumber + 1}
+                  </button>
+                </li>
+              );
+            })
+          : null}
         <li className={`page-item ${page === pages.length ? "disabled" : ""}`}>
           <button
             className="page-link"

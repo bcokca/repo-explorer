@@ -1,7 +1,7 @@
 import React from "react";
 import CommitCard from "./CommitCard";
-// import Pagination from "../../components/Pagination";
 import Service from "../shared/Service";
+import Pagination from "../../components/Pagination";
 
 class Commits extends React.Component {
   constructor(props) {
@@ -23,7 +23,6 @@ class Commits extends React.Component {
     Service.fetchCommits({ page, orgName, repoName }).then(commits => {
       this.setState({ commits, page });
     });
-    //TODO: scroll up
   }
 
   render() {
@@ -38,10 +37,10 @@ class Commits extends React.Component {
             : null}
         </div>
         <div>
-          {/* <Pagination
+          <Pagination
             paginationClickHandler={this.paginationClickHandler}
             page={page}
-          /> */}
+          />
         </div>
       </div>
     );
