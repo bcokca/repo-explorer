@@ -1,5 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
+/**
+ * TODO: Missing features:
+ * Input validators
+ * Option to trigger the handler with `debounce`
+ */
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +18,6 @@ class Search extends React.Component {
     labelTitle: "Search"
   };
 
-  //TODO: we also need validators such as space and stuff
   updateInputValue(event) {
     this.setState({
       searchKeyword: event.target.value
