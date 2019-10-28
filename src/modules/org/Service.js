@@ -13,9 +13,9 @@ const Service = {
     return fetch(url, PARAMS).then(res => res.json());
   },
 
-  searchRepos: function(orgName, keyword, page) {
-    const q = keyword ? `${keyword}+` : ''
-    const url = `${BASE_URL}/search/repositories?q=${q}org:${orgName}&sort=stars&order=desc&page=${page}`;
+  searchRepos: function({orgName, searchKeyword, page, sort}) {
+    const q = searchKeyword ? `${searchKeyword}+` : ''
+    const url = `${BASE_URL}/search/repositories?q=${q}org:${orgName}&sort=${sort}&order=desc&page=${page}`;
     return fetch(url, PARAMS).then(res => res.json());
   }
 };

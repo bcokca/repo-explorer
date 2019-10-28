@@ -2,37 +2,53 @@ import React from "react";
 import Repos from "./Repos";
 import Search from "../../components/Search";
 import Service from "./Service";
+import Filter from "./Filter";
 
 const INITIAL_PAGE = 1;
 const INITIAL_REPOS = {items: [], total_count: 0}
 class Organization extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { orgName: props.orgName, page: INITIAL_PAGE, searchKeyword: '', repos: INITIAL_REPOS};
+    this.state = {
+      orgName: props.orgName,
+      page: INITIAL_PAGE,
+      searchKeyword: '',
+      repos: INITIAL_REPOS,
+      sort: "forks",
+    };
     this.paginationClickHandler = this.paginationClickHandler.bind(this);
     this.searchClickHandler = this.searchClickHandler.bind(this);
+    this.selectChangeHandler = this.selectChangeHandler.bind(this);
   }
 
   componentDidMount() {
-    const { page } = this.state;
+    const { page, sort, searchKeyword } = this.state;
     const { orgName } = this.props;
-    Service.searchRepos(orgName, '', page).then(repos => {
+    Service.searchRepos({orgName, searchKeyword, page, sort}).then(repos => {
       this.setState({ repos });
     });
   }
 
   paginationClickHandler(page) {
     const { orgName } = this.props;
-    const { searchKeyword } = this.state;
-    Service.searchRepos(orgName, searchKeyword, page).then(repos => {
+    const { searchKeyword, sort } = this.state;
+    Service.searchRepos({orgName, searchKeyword, page, sort}).then(repos => {
       this.setState({ repos, page });
     });
   }
 
   searchClickHandler(searchKeyword) {
-    this.setState({searchKeyword, page: INITIAL_PAGE});
     const { orgName } = this.props;
-    Service.searchRepos(orgName, searchKeyword, INITIAL_PAGE).then(repos => {
+    const { sort } = this.state;
+    Service.searchRepos({orgName, searchKeyword, page: INITIAL_PAGE, sort}).then(repos => {
+      this.setState({ repos, page: INITIAL_PAGE, searchKeyword });
+    });
+  }
+
+  selectChangeHandler(sort) {
+    const { orgName } = this.props;
+    const { searchKeyword } = this.state;
+    Service.searchRepos({orgName, searchKeyword, page: INITIAL_PAGE, sort}).then(repos => {
       this.setState({ repos, page: INITIAL_PAGE });
     });
   }
@@ -47,12 +63,15 @@ class Organization extends React.Component {
         <div className="container row">
           <div className="col-6">
             <Search
+              // rename this to clickhandler
               onClickHandler={this.searchClickHandler}
               labelTitle={"Reposority Name"}
               hideBtn={true}
             />
           </div>
-          <div className="col-6">Filters</div>
+          <div className="col-6">
+            <Filter selectChangeHandler={this.selectChangeHandler}/>
+          </div>
         </div>
         <div className="col-12">
           <Repos
@@ -68,5 +87,4 @@ class Organization extends React.Component {
     );
   }
 }
-
 export default Organization;
