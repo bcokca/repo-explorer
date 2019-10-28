@@ -7,10 +7,10 @@ import Filter from "../../components/Filter";
 const INITIAL_PAGE = 1;
 const INITIAL_REPOS = { items: [], total_count: 0 };
 const SORT_FILTER_OPTIONS = [
-  { value: "forks", text: "Popularity" },
+  { value: "forks", text: "Most Popular" },
   { value: "stars", text: "Most Starred" },
   { value: "update", text: "Most Updated" },
-  { value: "help-wanted-issues", text: "Urgency (Needs Help)" }
+  { value: "help-wanted-issues", text: "Most Urgent" }
 ];
 
 class Organization extends React.Component {
@@ -80,7 +80,6 @@ class Organization extends React.Component {
         <div className="container row">
           <div className="col-6">
             <Search
-              // rename this to clickhandler
               onClickHandler={this.searchClickHandler}
               labelTitle={"Reposority Name"}
               hideBtn={true}

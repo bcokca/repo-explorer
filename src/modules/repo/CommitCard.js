@@ -4,6 +4,7 @@ function Card({ commitObj }) {
   const { html_url, sha } = commitObj;
   const commit = commitObj.commit;
   const { author, message } = commit;
+  const date = new Date(author.date);
   return (
     <div className="list-group-item list-group-item-action">
       <div className="d-flex w-100 justify-content-between">
@@ -18,7 +19,8 @@ function Card({ commitObj }) {
       </div>
       <p className="mb-1"></p>
       <small>
-        <strong>{author.name}</strong> committed on {author.date}
+        {/* TODO: relative date filter */}
+        <strong>{author.name}</strong> committed on {date.toLocaleDateString()} at {date.toLocaleTimeString()}
       </small>
     </div>
   );

@@ -24,7 +24,7 @@ class SortFilter extends React.Component {
     const {filterOptions} = this.props;
     return (
       <div className="form-group">
-        <label htmlFor="filter-select">Select Filter</label>
+        <label htmlFor="filter-select">Sort by</label>
         <select
           className="form-control"
           id="filter-select"
