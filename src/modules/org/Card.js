@@ -13,8 +13,8 @@ function Card({ name, description, commitsClickHandler, language, license, forks
         {license ? (
           <span className="badge badge-pill badge-light">{license.name}</span>
         ) : null}
-        <span class="badge">Forks: </span><span class="badge badge-secondary">{forks_count}</span>
-        <span class="badge">Stars: </span><span class="badge badge-warning">{stargazers_count}</span>
+        <span className="badge">Forks: </span><span className="badge badge-secondary">{forks_count}</span>
+        <span className="badge">Stars: </span><span className="badge badge-warning">{stargazers_count}</span>
       </div>
     </div>
   );

@@ -2,19 +2,26 @@ import React from "react";
 import Repos from "./Repos";
 import Search from "../../components/Search";
 import Service from "../shared/Service";
-import Filter from "./Filter";
+import Filter from "../../components/Filter";
 
 const INITIAL_PAGE = 1;
-const INITIAL_REPOS = {items: [], total_count: 0}
+const INITIAL_REPOS = { items: [], total_count: 0 };
+const SORT_FILTER_OPTIONS = [
+  { value: "forks", text: "Popularity" },
+  { value: "stars", text: "Most Starred" },
+  { value: "update", text: "Most Updated" },
+  { value: "help-wanted-issues", text: "Urgency (Needs Help)" }
+];
+
 class Organization extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       orgName: props.orgName,
       page: INITIAL_PAGE,
-      searchKeyword: '',
+      searchKeyword: "",
       repos: INITIAL_REPOS,
-      sort: "forks",
+      sort: "forks"
     };
     this.paginationClickHandler = this.paginationClickHandler.bind(this);
     this.searchClickHandler = this.searchClickHandler.bind(this);
@@ -24,7 +31,7 @@ class Organization extends React.Component {
   componentDidMount() {
     const { page, sort, searchKeyword } = this.state;
     const { orgName } = this.props;
-    Service.searchRepos({orgName, searchKeyword, page, sort}).then(repos => {
+    Service.searchRepos({ orgName, searchKeyword, page, sort }).then(repos => {
       this.setState({ repos });
     });
   }
@@ -32,7 +39,7 @@ class Organization extends React.Component {
   paginationClickHandler(page) {
     const { orgName } = this.props;
     const { searchKeyword, sort } = this.state;
-    Service.searchRepos({orgName, searchKeyword, page, sort}).then(repos => {
+    Service.searchRepos({ orgName, searchKeyword, page, sort }).then(repos => {
       this.setState({ repos, page });
     });
   }
@@ -40,7 +47,12 @@ class Organization extends React.Component {
   searchClickHandler(searchKeyword) {
     const { orgName } = this.props;
     const { sort } = this.state;
-    Service.searchRepos({orgName, searchKeyword, page: INITIAL_PAGE, sort}).then(repos => {
+    Service.searchRepos({
+      orgName,
+      searchKeyword,
+      page: INITIAL_PAGE,
+      sort
+    }).then(repos => {
       this.setState({ repos, page: INITIAL_PAGE, searchKeyword });
     });
   }
@@ -48,13 +60,18 @@ class Organization extends React.Component {
   selectChangeHandler(sort) {
     const { orgName } = this.props;
     const { searchKeyword } = this.state;
-    Service.searchRepos({orgName, searchKeyword, page: INITIAL_PAGE, sort}).then(repos => {
+    Service.searchRepos({
+      orgName,
+      searchKeyword,
+      page: INITIAL_PAGE,
+      sort
+    }).then(repos => {
       this.setState({ repos, page: INITIAL_PAGE });
     });
   }
 
   render() {
-    const { repos, page, orgName } = this.state;
+    const { repos, page, orgName, sort } = this.state;
     return (
       <div className="content row">
         <div className="repoHeader col-12">
@@ -70,7 +87,11 @@ class Organization extends React.Component {
             />
           </div>
           <div className="col-6">
-            <Filter selectChangeHandler={this.selectChangeHandler}/>
+            <Filter
+              filterValue={sort}
+              filterOptions={SORT_FILTER_OPTIONS}
+              selectChangeHandler={this.selectChangeHandler}
+            />
           </div>
         </div>
         <div className="col-12">
@@ -79,7 +100,7 @@ class Organization extends React.Component {
             pagination={{
               paginationClickHandler: this.paginationClickHandler,
               page,
-              total_count:repos.total_count,
+              total_count: repos.total_count
             }}
           />
         </div>

@@ -1,24 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const SORT_FILTER_OPTIONS = [
-  { value: "forks", text: "Popularity" },
-  { value: "stars", text: "Most Starred" },
-  { value: "update", text: "Most Updated" },
-  { value: "help-wanted-issues", text: "Urgency (Needs Help)" }
-];
-
 class SortFilter extends React.Component {
   constructor(props) {
     super(props);
-    const { sort } = this.props;
-    this.state = { sort };
+    const { filterValue } = this.props;
+    this.state = { filterValue };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  static defaultProps = {
-    sort: "forks"
-  };
 
   handleSubmit(event) {
     event.preventDefault();
@@ -32,6 +21,7 @@ class SortFilter extends React.Component {
   }
 
   render() {
+    const {filterOptions} = this.props;
     return (
       <div className="form-group">
         <label for="exampleFormControlSelect1">Select Filter</label>
@@ -40,7 +30,7 @@ class SortFilter extends React.Component {
           id="exampleFormControlSelect1"
           onChange={this.handleSubmit}
         >
-          {SORT_FILTER_OPTIONS.map(option => {
+          {filterOptions.map(option => {
             return <option value={option.value}>{option.text}</option>;
           })}
         </select>
@@ -50,8 +40,9 @@ class SortFilter extends React.Component {
 }
 
 SortFilter.propTypes = {
-  name: PropTypes.string,
-  selectChangeHandler: PropTypes.func.isRequired
+  filterValue: PropTypes.string,
+  selectChangeHandler: PropTypes.func.isRequired,
+  filterOptions: PropTypes.array
 };
 
 export default SortFilter;
