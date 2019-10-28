@@ -1,7 +1,7 @@
 import React from "react";
 import Repos from "./Repos";
 import Search from "../../components/Search";
-import Service from "./Service";
+import Service from "../shared/Service";
 import Filter from "./Filter";
 
 const INITIAL_PAGE = 1;

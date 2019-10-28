@@ -32,8 +32,6 @@ class SortFilter extends React.Component {
   }
 
   render() {
-    const { sort } = this.state;
-
     return (
       <div className="form-group">
         <label for="exampleFormControlSelect1">Select Filter</label>
